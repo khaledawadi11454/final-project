@@ -33,16 +33,16 @@ AOS.init()
       <nav ref={navRef}>
       <Link to="/dashboard">Dashboard</Link>
         <Link to="/">Home</Link>
-        <Link to="/my-work">My Work</Link>
+        
         <Link to="/blog">Blog</Link>
         <Link to="/about">About</Link>
-        <Link to="/job">Find Jobs</Link>
         <Link to="/company">Company Profile</Link>
         <Link to="/resources">Resources</Link>
         <Link to="/events">Events</Link>
-        <Link to="/Test">Test1</Link>
+        <Link to="/findjob">Find Job</Link>
         <Link to="/test5">tables</Link>
-       
+        <Link to="/eventT">EventT</Link>
+        <Link to="/jobT">JobT</Link>
         <div className="profile-menu">
           <button className="nav-btn profile-icon" onClick={toggleProfileMenu}>
             <FaUser />

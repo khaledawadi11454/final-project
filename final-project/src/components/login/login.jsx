@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './login.css';
-
+import React, { useState } from "react";
+import "./login.css";
+import axios from "axios";
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -13,13 +13,18 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const resp = await axios.post("https://finalproject-app-api.onrender.com/user/login", {
+      email: email,
+      password: password,
+    });
+    console.log("loginnnn", resp);
     // Perform login logic here with email and password
-    console.log('Login submitted');
+    console.log("Login submitted");
     // Reset form fields
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -46,17 +51,19 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button className="form-button" type="submit">Login</button>
+        <button className="form-button" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
 };
 
 const SignupForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -74,15 +81,22 @@ const SignupForm = () => {
     setRole(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const resp = await axios.post("https://finalproject-app-api.onrender.com/user/register", {
+      name: name,
+      email: email,
+      password: password,
+      role: role,
+    });
+    console.log(resp);
     // Perform sign-up logic here with name, email, password, and role
-    console.log('Signup submitted');
+    console.log("Signup submitted");
     // Reset form fields
-    setName('');
-    setEmail('');
-    setPassword('');
-    setRole('');
+    setName("");
+    setEmail("");
+    setPassword("");
+    setRole("");
   };
 
   return (
@@ -132,38 +146,40 @@ const SignupForm = () => {
             <option value="customer">Customer</option>
           </select>
         </div>
-        <button className="form-button" type="submit">Sign Up</button>
-</form>
-</div>
-);
+        <button className="form-button" type="submit">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  );
 };
 
 const App = () => {
-const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState("login");
 
-const handleTabChange = (tab) => {
-setActiveTab(tab);
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  return (
+    <div className="app-container">
+      <div className="tabs-container">
+        <button
+          className={`tab-button ${activeTab === "login" ? "active" : ""}`}
+          onClick={() => handleTabChange("login")}
+        >
+          Login
+        </button>
+        <button
+          className={`tab-button ${activeTab === "signup" ? "active" : ""}`}
+          onClick={() => handleTabChange("signup")}
+        >
+          Sign Up
+        </button>
+      </div>
+      {activeTab === "login" ? <LoginForm /> : <SignupForm />}
+    </div>
+  );
 };
-
-            return (
-            <div className="app-container">
-            <div className="tabs-container">
-            <button
-            className={`tab-button ${activeTab === 'login' ? 'active' : ''}`}
-            onClick={() => handleTabChange('login')}
-            >
-            Login
-            </button>
-            <button
-            className={`tab-button ${activeTab === 'signup' ? 'active' : ''}`}
-            onClick={() => handleTabChange('signup')}
-            >
-            Sign Up
-            </button>
-            </div>
-            {activeTab === 'login' ? <LoginForm /> : <SignupForm />}
-            </div>
-            );
-            };
 
 export default App;

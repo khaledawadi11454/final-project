@@ -71,17 +71,18 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar1 from './components/Navbar1/Navbar1.jsx';
 import DashCon from './pages/DashboardContainer';
+import TableEventDashboard from '../../final-project/src/components/table/TableEventDashboard.jsx';
+import TableJobs from '../../final-project/src/components/table/TableResourceDashboard.jsx';
+import TableFindJobDashboard from '../../final-project/src/components/TableFindJobDashboard/TableFindJobDashboard.jsx';
 
-import TableJobs from '../../final-project/src/components/table/tablejob.jsx';
-// import SliderComponent from './components/HeroSection/HeroSession.jsx';
 import Profiledash from '../src/components/dashbordcomponant/profiledash.jsx';
 import HomePage from '../src/pages/homePage/home.jsx';
 import AboutPage from '../src/pages/aboutPage/AboutPage.jsx';
 
 import BlogPage from '../src/pages/BlogPage/Blog.jsx';
-// import JobListing from '../src/';
+
 import JobPage from '../src/pages/CompanyProfile/CompanyProfile.jsx';
-import JobBoard from '../src/pages/FindJob/FindJob';
+
 import Resources from '../src/pages/Resources/Resources.jsx';
 import Events from '../src/pages/Events/Events.jsx';
 import Profile from '../src/pages/ProfilePage/Profile.jsx';
@@ -89,6 +90,7 @@ import JobList from "../src/pages/Test/Test.jsx";
 import Header from '../src/components/SideBar/Sidebar.jsx';
 // import Dashboard from '../src/pages/Dashboard/dashbord.jsx';
 // import AnimatedBackground from '../src/pages/ProfilePage/animeted.jsx';
+import LoginForm from '../../final-project/src/components/login/login.jsx';
 function App() {
   return (
     <div className="App">
@@ -101,18 +103,22 @@ function App() {
                 <Route path="profile" element={<Profiledash/>}/>
               </Route>
 
+              <Route path='/eventT' element={<TableEventDashboard/>}/>
+              <Route path='/jobT' element={<TableFindJobDashboard/>}/>
+              <Route path='/'element={<LoginForm/>}/>
               <Route path="/test5" element={<TableJobs/>} />
-            <Route path="/" element={<HomePage/>} />
+            <Route path="/home" element={<HomePage/>} />
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/company" element={<JobPage />} />
-            <Route path='/job' element={<JobBoard/>}/>
+     
             <Route path='/resources' element={<Resources/>}/>
             <Route path='/events' element={<Events/>}/>
             <Route path='/profile' element={<Profile/>}/>
-            <Route path='/Test' element={<JobList/>}/>
+            <Route path='/findjob' element={<JobList/>}/>
             <Route path='/dashboard' element={<Header/>}/>
-            {/* <Route path='/my-work' element={<AnimatedBackground/>}/> */}
+            
+          
           </Routes>
         </Scrollbars>
       </Router>

@@ -69,6 +69,7 @@ const PersonalInformation = () => {
           <label>First Name:</label>
           {isEditing ? (
             <input
+            className='inputpersonalinformation'
               type="text"
               name="firstName"
               value={formData.firstName}
